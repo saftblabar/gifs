@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pl.akademiakodu.gifs.model.Gif;
 import pl.akademiakodu.gifs.repository.GifRepository;
 
+import java.util.List;
+
 @Controller
 public class Run {
     @Autowired
@@ -20,15 +22,31 @@ public class Run {
 //        this.gifRepository = gifRepository
 //    } wstrzyknęliśmy obiekt przez konstruktor
     @GetMapping("/")
-    @ResponseBody
-    public String hello () {
-        return "Dziala";
+
+    public String hello (ModelMap modelMap) {
+       //Wyciągnięcie gifów
+        List<Gif> gifList = gifRepository.getGifs();
+        //przekazanie do warstwy widoków. modelmapa przyjmuje jako klucz z wartswy forntu, jako wartość z backendu
+        modelMap.put("gifs", gifList);
+        //zwrócenie widoku
+        return "home.html";
+
     }
 
     @GetMapping("/showgifsinbrowser")
     @ResponseBody
     public String showGifNames () {
         return gifRepository.getGifNames();
+    }
+
+    @GetMapping("/favorites")
+    public String favoritesGifs(ModelMap modelMap) {
+      //  1. wyciągniecie wartości
+    List<Gif> favoritesGifs = gifRepository.getFavoritesGifs();
+        //2. przekazanie do view
+    modelMap.put("gifs", favoritesGifs);
+        //3. zwrócenie widoku
+        return "favorites.html";
     }
 
 
