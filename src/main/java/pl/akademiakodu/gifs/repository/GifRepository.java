@@ -39,9 +39,11 @@ public class GifRepository {
 
 
     public List<Gif> getFavoritesGifs (){
-        return ALL_GIFS.stream().
+         ALL_GIFS.stream().
                 filter(Gif::getFavorite)
                 .collect(Collectors.toList());
+
+     //   pętla zamiast streamu:
 
         List<Gif> favorites = new ArrayList<>();
         for (Gif allGif : ALL_GIFS) {
@@ -50,4 +52,14 @@ public class GifRepository {
             }
         } return favorites;
     }
+    public Gif getGifByName (String name) {
+        Gif gif = null;
+        for (Gif g : ALL_GIFS) {
+            if (gif.getName().equals(name)){ //w konstruktorze jest name czyli nazwa gifa. Jak pętla natrafi na tę samą nazwę to ok, zwróci. jak nie to null i w przeglądarce wywali błąd.
+                return g;
+            }
+        } return null;
+    }
+
+
 }

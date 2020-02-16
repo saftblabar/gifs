@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.akademiakodu.gifs.model.Gif;
 import pl.akademiakodu.gifs.repository.GifRepository;
@@ -49,6 +50,16 @@ public class Run {
         return "favorites.html";
     }
 
+    @GetMapping("/gif/{name}") //ww ąśach jakaś zmienna. poniżej adnotacja Path i nazwa tej zmiennej.
+    //chcemy na frotnt dostarczyć obiekt o tej nzawie
+    public String getGifByName(@PathVariable String name, ModelMap modelMap) {
+        //  1. wyciągniecie wartości
+        Gif g = gifRepository.getGifByName(name);
+        //2.
+        modelMap.put("gif", g);
+      //  3.
+        return "gif-details";
+    }
 
 
 
