@@ -37,7 +37,7 @@ public class GifRepository {
         return result;
     }
 
-
+//pokazanie ulubionych zdjęć:
     public List<Gif> getFavoritesGifs (){
          ALL_GIFS.stream().
                 filter(Gif::getFavorite)
@@ -52,6 +52,8 @@ public class GifRepository {
             }
         } return favorites;
     }
+
+    //metoda do pokazywania konkretnego zdjęcia:
     public Gif getGifByName (String name) {
         Gif gif = null;
         for (Gif g : ALL_GIFS) {
