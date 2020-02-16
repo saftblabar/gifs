@@ -25,7 +25,7 @@ public class GifRepository {
             new Gif("infinite-andrew", "andrew", false, 2)
     );
     //metoda która podaje nam wszystkie gify
-    public List<Gif> getGifs() {
+    public List<Gif> getGifs() { //czy to jest 'getter' dla listy?
      return ALL_GIFS;
     }
 
@@ -62,6 +62,14 @@ public class GifRepository {
             }
         } return null;
     }
-
+    public List<Gif> getGifsByCategoryId(int id) {
+        //pusta lista gifów do której będziemy dosypywać
+        List<Gif> gifs = new ArrayList<>();
+        for (Gif g : ALL_GIFS) {
+            if (g.getCategoryId() == id) {
+                gifs.add(g);
+            }
+        } return gifs;
+    }
 
 }

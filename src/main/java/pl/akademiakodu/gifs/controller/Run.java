@@ -50,7 +50,7 @@ public class Run {
         return "favorites.html";
     }
 
-    @GetMapping("/gif/{name}") //ww ąśach jakaś zmienna. poniżej adnotacja Path i nazwa tej zmiennej.
+    @GetMapping("/gif/{name}") //w wąsach jakaś zmienna. poniżej adnotacja Path i nazwa tej zmiennej żeby to zmapować..
     //chcemy na frotnt dostarczyć obiekt o tej nzawie
     public String getGifByName(@PathVariable String name, ModelMap modelMap) {
         //  1. wyciągniecie wartości

@@ -16,9 +16,23 @@ public class CategoryRepository {
             new Category(1, "sport"),
             new Category(2, "it"));
 
-            public static List<Category> getAllCategories() {
-                return ALL_CATEGORIES;
-            }
+    public static List<Category> getAllCategories() {
+        return ALL_CATEGORIES;
+    }
 
+    //      zwróci nam kategorie po id
+
+    public Category getCategoryById(int id) {
+
+        for (Category allCategory : ALL_CATEGORIES) {
+            if (allCategory.getId() == id) {
+                return allCategory;
+            }
         }
+
+        return null;
+
+    }
+
+}
 
